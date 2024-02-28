@@ -1,12 +1,25 @@
 from fastapi import FastAPI
+
 from typing import List
 from starlette.middleware.cors import CORSMiddleware
 
+# web
+from fastapi.responses import HTMLResponse
+from fastapi.templating import Jinja2Templates
+from starlette.responses import RedirectResponse
+from fastapi import APIRouter, Request, Form
 
 
+
+# .py 
 from model import UserTable, User
 from model import FruitTable, Fruit
 from db import session
+
+
+# 라이브러리
+# ====================================================================================
+
 
 if __name__ == '__main__':
     import uvicorn
@@ -21,6 +34,11 @@ if __name__ == '__main__':
     )
 
 
+router = APIRouter()
+templates = Jinja2Templates(directory="static")
+
+
+
 app = FastAPI()
 
 app.add_middleware(
@@ -30,6 +48,29 @@ app.add_middleware(
     allow_methods=['*'],
     allow_headers=['*'],
 )
+
+
+@app.get('/')
+def hi():
+    return 'Hello World !'
+
+
+# 단순 웹띄우기
+@app.get("/show", response_class=HTMLResponse)
+async def show_web(request: Request):
+    context = {}
+    names = ["Jane", "Happy", "Siri"]
+    context = {"request": request, "names": names}  # currentIndex 추가
+    return templates.TemplateResponse("index.html", context)
+
+
+# 단순 웹띄우기
+@app.get("/show2",response_class = HTMLResponse)
+def show_web(request : Request):
+
+    return templates.TemplateResponse('test.html',{"request": request})
+
+
 
 
 # select all 
