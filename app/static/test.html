@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div style="border: 1px solid black">
+        Block
+    </div>
+    <span style="background-color: aqua;">Inline</span>
+    <!-- <iframe src="./static/index.html" name="iframe_a" height=400 width=300 title="Ifram Example"></iframe> -->
+
+
+
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+    <form name="fname" action="sign.jsp" method="post">
+        <label for="name">이름</label>
+        <input type="text" id="name" name="name" value="wook" size="10">
+        <select id="food" name="food" >
+            <optgroup label="음식">
+                <option value="pizza" selected>피자</option>
+                <option value="burger" >햄버거</option>
+                <option value="pasta" >파스타</option>    
+            </optgroup>
+            <optgroup label="후식">
+                <option value="cola" selected>커피</option>
+                <option value="coffee" >콜라</option>
+                <option value="icecream" >아이스크림</option>    
+            </optgroup>
+        </select><br/>
+        <textarea name="article" rows="10" cols="10">텍스트</textarea>
+        <button>Button</button>
+        <fieldset>
+            <legend>개인정보</legend>
+            <label for="name">이름 : </label>
+            <input type="text" id="name" name="name" value="wook" size="10">
+            <label for="af">소속</label>
+            <input type="text" id="af" name="af" value="school" size="10">
+            <input type="submit" value="전송">
+        </fieldset>
+        <input list="browsers">
+        <datalist id="browsers">
+            <option value="Chrome"></option>
+            <option value="FireFox"></option>
+            <option value="Internet"></option>
+            <option value="Safari"></option>
+        </datalist>
+
+
+    </form>
+
+    <form oninput="r.value=parseInt(x.value) * parseInt(y.value)">
+        <input type="number" id="x" name="x" value="10">
+        X
+        <input type="number" id="y" name="y" value="20">
+        =
+        <output name="r" for="x y" ></output><br/>
+        <input type="submit">
+    </form>
+
+
+
+    <form >
+        <input type="text" name="text" size="20" placeholder="이름">
+        <input type="password" name="password" required>
+        <input type="button" value="Button">
+
+        <input type="radio" name="gender" value="male" >남자 
+        <input type="radio" name="gender" value="female" checked>여자 
+
+        <input type="checkbox" name="food" value="pizza">피자<br/>
+        <input type="checkbox" name="food" value="burger">햄버거<br/>
+        <input type="checkbox" name="food" value="pasta">파스타<br/>
+
+        <input type="date" name="date" min="2020-01-01" max="2023-12-31"> 
+        <input type="month" id="month" name="month">
+        <input type="week" id="week" name="week">
+        <input type="time" id="time" name="time">
+        <input type="datetime-local" id="datetime" name="datetime">
+    
+        <input type="color" name="color">
+        <input type="number" name="num" min="0" max="1000" value="10">
+        <input type="range" name="point" min="0" max="100">
+
+        <input type="email" name="email">
+        <input type="url" name="myUrl">
+        <input type="tel" name="phone" id="phone" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}">
+        <input type="file" name="myfile" id="myfile">
+        <input type="submit" value="전송">
+        <input type="reset" value="초기화">
+
+    </form>
+
+
+
+
+
+
+
+    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <img src="https://srv.carbonads.net/static/30242/cfae0bcc9eeb2652dd375b40461352efdb6057ba" alt="이미지 없음" width="100" height="100" border=1>
+    <img src="https://srv.carbonads.net/static/30242/cfae0bcc9eeb2652dd375b40461352212defdb6057ba" alt="이미지 없음" width="100" height="100" border=1>
+
+    <audio src="" controls autoplay></audio>
+    <video src="" controls width=500 height=400></video>
+    
+    <table border="1">
+        <caption>테이블 1</caption>
+        <tr>
+            <th>이름</th>
+            <th>성별</th>
+        </tr>
+        <tr>
+            <td>잭</td>
+            <td>남자</td>
+        </tr>
+        <tr>
+            <td>실</td>
+            <td>여자</td>
+        </tr>
+    </table>
+    <table border="1">
+        <caption>시간표</caption>
+        <thead>
+            <tr>
+                <th rowspan=2>교시</th>
+                <th colspan=5>요일</th>
+            </tr>
+            <tr>
+                <th>월</th>
+                <th>화</th>
+                <th>수</th>
+                <th>목</th>
+                <th>금</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1교시</td>
+                <td>컴퓨터개론</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>2교시</td>
+                <td></td>
+                <td>인공지능</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>3교시</td>
+                <td></td>
+                <td></td>
+                <td>프론트</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>4교시</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>백엔드</td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>
