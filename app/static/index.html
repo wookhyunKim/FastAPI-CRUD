@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic Name Display</title>
+</head>
+
+
+
+
+<body>
+
+    <script>
+        var currentIndex = 0
+
+        function update(){
+
+        }
+
+    </script>
+
+
+    {# ====================반복문======================== #}
+    {% for todo in names %}
+	    Do something with {{todo}}<br/>
+    {% endfor %}
+
+
+    {% if names %}
+        Displaying: {{ names|length }} 명<br/>
+    {% else %}
+        You don't have any todos :)<br/>
+    {% endif %}
+
+
+    {{ names|length }} == length(names)
+
+
+    <!-- 버튼 클릭 시 updateNumber 함수 호출 -->
+    <input type="text" id="name" value="{{ names[currentIndex] }}">
+    <button onclick="updateNumber('{{names}}')">Change Name</button>
+</body>
+</html>

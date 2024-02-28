@@ -18,6 +18,8 @@ DB_URL = f'mysql+pymysql://{user_name}:{user_pwd}@{db_host}:{db_port}/{db_name}?
 
 ENGINE = create_engine(
     DB_URL,
+    # encoding="utf-8",
+    echo=True
 )
 
 session = scoped_session(
