@@ -179,7 +179,7 @@ async def update_fruits(fruits : List[Fruit]):
 
     return f'{fruits[0].name} created....'
 
-
+# update in web
 @app.post('/update_fruit')
 async def update_fruits(request: Request, id: int = Form(...),name: str = Form(...), price: int = Form(...)):
 
@@ -187,6 +187,16 @@ async def update_fruits(request: Request, id: int = Form(...),name: str = Form(.
     fruit = session.query(FruitTable).filter(FruitTable.fid == id).first()
     fruit.fname = name
     fruit.fprice = price
+    session.commit()
+
+    return RedirectResponse(url='/fruits',status_code=302)
+
+# delete in web
+@app.post('/delete_fruit')
+async def update_fruits(request: Request, id: int = Form(...)):
+
+    
+    fruit = session.query(FruitTable).filter(FruitTable.fid == id).delete()
     session.commit()
 
     return RedirectResponse(url='/fruits',status_code=302)
