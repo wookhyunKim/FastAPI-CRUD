@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    
+    <table border="1">
+        <caption>테이블 1</caption>
+        <tr>
+            <th>번호</th>
+            <th>과일</th>
+            <th>가격</th>
+        </tr>
+        {% for fruit in fruits %}
+        <tr>
+            <td>{{fruit.fid}}</td>
+            <td>{{fruit.fname}}</td>
+            <td>{{fruit.fprice}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+
+</body>
+</html>

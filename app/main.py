@@ -4,9 +4,9 @@ from typing import List
 from starlette.middleware.cors import CORSMiddleware
 
 # web
-from fastapi.responses import HTMLResponse
+from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.templating import Jinja2Templates
-from starlette.responses import RedirectResponse
+# from starlette.responses import RedirectResponse
 from fastapi import APIRouter, Request, Form
 
 
@@ -50,13 +50,15 @@ app.add_middleware(
 )
 
 
+
+
 @app.get('/')
 def hi():
     return 'Hello World !'
 
 
 # 단순 웹띄우기
-@app.get("/show", response_class=HTMLResponse)
+@app.get("/show")
 async def show_web(request: Request):
     context = {}
     names = ["Jane", "Happy", "Siri"]
@@ -64,12 +66,25 @@ async def show_web(request: Request):
     return templates.TemplateResponse("index.html", context)
 
 
+# @app.post("/insert")
+# async def insert_web(request: Request):
+#     context = {}
+#     names = ["Jane", "Happy", "Siri"]
+#     context = {"request": request, "names": names}  # currentIndex 추가
+#     return templates.TemplateResponse("index.html", context)
+
+
 # 단순 웹띄우기
-@app.get("/show2",response_class = HTMLResponse)
+@app.get("/show2")
 def show_web(request : Request):
 
     return templates.TemplateResponse('test.html',{"request": request})
 
+# 단순 웹띄우기
+@app.get("/show3")
+def show_web(request : Request):
+
+    return templates.TemplateResponse('tf.html',{"request": request,'id':3})
 
 
 
@@ -128,30 +143,33 @@ def read_users(user_id : int):
 # =================================
 # select all 
 @app.get('/fruits')
-def read_fruits():
+async def read_fruits(request:Request):
 
     fruits = session.query(FruitTable).all()
 
-    return fruits
+    return templates.TemplateResponse('table.html',{"request": request,'fruits':fruits})
+
 
 
 # insert
 @app.post('/fruit')
-def create_fruit(name:str, price: int):
+async def create_fruit(request: Request, name: str = Form(...), price: int = Form(...)):
+        fruit = FruitTable()
+        fruit.fname = name  
+        fruit.fprice = price
 
-    fruit = FruitTable()
-    fruit.fname = name  # name , price 는 url에서 localhost/fruit?name=xxx&price=1000  에서 사용되는 name, price임
-    fruit.fprice = price
+        session.add(fruit)
+        session.commit()
+        return RedirectResponse(url='/fruits',status_code=302)
 
-    session.add(fruit)
-    session.commit()
-
-    return f'{name} created....'
+        # return f'{name} created....'
 
 
-# update
+
+
+# update swagger
 @app.put('/fruits')
-def update_fruits(fruits : List[Fruit]):
+async def update_fruits(fruits : List[Fruit]):
 
     for i in fruits:
         fruit = session.query(FruitTable).filter(FruitTable.fid == i.fid).first()
@@ -160,3 +178,15 @@ def update_fruits(fruits : List[Fruit]):
         session.commit()
 
     return f'{fruits[0].name} created....'
+
+
+@app.post('/update_fruit')
+async def update_fruits(request: Request, id: int = Form(...),name: str = Form(...), price: int = Form(...)):
+
+    
+    fruit = session.query(FruitTable).filter(FruitTable.fid == id).first()
+    fruit.fname = name
+    fruit.fprice = price
+    session.commit()
+
+    return RedirectResponse(url='/fruits',status_code=302)
