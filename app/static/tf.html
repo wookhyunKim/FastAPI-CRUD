@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form name="inputdata" action="/fruit" method="post">
+        <input type="text" id="fname" name="name" value="" placeholder="과일명" width="120"><br/>
+        <input type="number" id="fprice" name="price" value="" placeholder="과일 가격" width="120">        
+        <input type="submit" value="입력">
+    </form>
+
+
+<br/><br/><br/><br/><br/><br/>
+
+    <form name="updatedata" action="/update_fruit" method="post">
+        <input type="text" id="fid" name="id" value="{{id}}" placeholder="과일번호" width="120"><br/>
+        <input type="text" id="fname" name="name" value="" placeholder="과일명" width="120"><br/>
+        <input type="number" id="fprice" name="price" value="" placeholder="과일 가격" width="120">        
+        <input type="submit" value="입력">
+    </form>
+
+
+
+
+
+
+</body>
+</html>
