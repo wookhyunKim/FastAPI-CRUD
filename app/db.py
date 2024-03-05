@@ -6,7 +6,7 @@ from sqlalchemy.orm import sessionmaker, scoped_session
 
 
 user_name = 'root' # db id 
-user_pwd = 'futuremain9735' # db pwd
+user_pwd = 'password' # db pwd
 db_host = '127.0.0.1' # url
 db_name = 'data' # skima 
 db_port = 3307 # port 
