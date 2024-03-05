@@ -2,7 +2,7 @@ import psycopg2
 
 class Databases():
     def __init__(self):
-        self.db = psycopg2.connect(host='localhost', dbname='shop',user='fmroot',password='futuremain9735',port=5432)
+        self.db = psycopg2.connect(host='localhost', dbname='skima',user='id',password='password',port=5432)
         self.cursor = self.db.cursor()
 
     def __del__(self):
